@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>نامه عاشقانه 💌</title>
+    <link rel="icon" href="images.jpg" type="image/jpg">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Tahoma", sans-serif;
+      }
+
+      body {
+        min-height: 100vh;
+        background: linear-gradient(
+          135deg,
+          #ff9a9e 0%,
+          #fecfef 50%,
+          #fecfef 100%
+        );
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* قلب‌های شناور پس‌زمینه */
+      .heart-bg {
+        position: absolute;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 20px;
+        animation: floatUp linear infinite;
+        pointer-events: none;
+      }
+      @keyframes floatUp {
+        from {
+          transform: translateY(100vh) scale(0.5);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(-10vh) scale(1.2);
+          opacity: 1;
+        }
+      }
+
+      .container {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 40px 30px;
+        border-radius: 25px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        max-width: 500px;
+        width: 90%;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+        animation: popIn 0.8s ease;
+      }
+      @keyframes popIn {
+        from {
+          transform: scale(0.7);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      h1 {
+        color: #d6336c;
+        margin-bottom: 15px;
+        font-size: 26px;
+      }
+
+      .envelope {
+        font-size: 70px;
+        margin: 15px 0;
+        animation: bounce 1.5s infinite;
+      }
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      p.subtitle {
+        color: #666;
+        margin-bottom: 25px;
+        font-size: 15px;
+      }
+
+      button {
+        background: linear-gradient(135deg, #ff6b9d, #d6336c);
+        color: rgb(237, 198, 247);
+        border: none;
+        padding: 14px 40px;
+        border-radius: 50px;
+        font-size: 17px;
+        cursor: pointer;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        box-shadow: 0 8px 20px rgba(214, 51, 108, 0.4);
+      }
+      button:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 12px 25px rgba(247, 7, 155, 0.6);
+      }
+
+      /* نامه مخفی */
+      .letter {
+        display: none;
+        text-align: right;
+        line-height: 2;
+        color: #000000;
+        animation: fadeIn 1s ease;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .letter h2 {
+        color: #da1a1a;
+        text-align: center;
+        margin-bottom: 15px;
+      }
+      .letter p {
+        margin-bottom: 15px;
+        font-size: 16px;
+      }
+      .signature {
+        text-align: left;
+        color: #e20c0c;
+        font-weight: bold;
+        margin-top: 20px;
+      }
+      .show {
+        display: block;
+      }
+      .hide {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- حالت اول: دکمه -->
+      <div id="startScreen">
+        <h1>سلام ملینای عزیزم💖</h1>
+        <h3>مرسی که همیشه کنارمی میخواستم یه چیزی بگم</h3>
+        <div class="envelope">💌</div>
+        <p class="subtitle">یه نامه برات دارم... می‌خوای بخونیش؟</p>
+        <button onclick="openLetter()">بازش کن ❤️</button>
+      </div>
+
+      <!-- حالت دوم: نامه -->
+      <div class="letter" id="letterScreen">
+        <h2>برای ملینای عزیزم💖</h2>
+        <p>سلام عشقم،</p>
+        <p>
+          نمی‌دونم این نامه رو از کجا شروع کنم، ولی فقط می‌خواستم بدونی که بودن
+          تو، بهترین اتفاق زندگی منه.
+        </p>
+        <p>
+          هر روز که بیدار می‌شم، اولین فکرم تویی و آخرین فکرم هم تویی. خنده‌هات،
+          حرف زدنت، و حتی دلخوری‌های کوچیکت، همه‌ش برام قشنگه.
+        </p>
+        <p>
+          ممنونم که هستی، که تحملم می‌کنی، و اینکه کنارمی. دوستت دارم، بیشتر از
+          اون چیزی که بتونم بگم.با عشق از طرف ممد ❤️
+        </p>
+        <p class="signature">همیشه عاشقت،<br />من 🌹</p>
+      </div>
+    </div>
+
+    <script>
+      // ساخت قلب‌های شناور
+      for (let i = 0; i < 25; i++) {
+        const heart = document.createElement("div");
+        heart.classList.add("heart-bg");
+        heart.innerHTML = "❤";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = Math.random() * 5 + 5 + "s";
+        heart.style.animationDelay = Math.random() * 5 + "s";
+        heart.style.fontSize = Math.random() * 20 + 10 + "px";
+        document.body.appendChild(heart);
+      }
+
+      function openLetter() {
+        document.getElementById("startScreen").classList.add("hide");
+        const letter = document.getElementById("letterScreen");
+        letter.classList.add("show");
+        // افکت قلب‌های بیشتر موقع باز شدن
+        burstHearts();
+      }
+
+      function burstHearts() {
+        for (let i = 0; i < 30; i++) {
+          const h = document.createElement("div");
+          h.innerHTML = "💖";
+          h.style.position = "fixed";
+          h.style.left = "50%";
+          h.style.top = "50%";
+          h.style.fontSize = Math.random() * 25 + 15 + "px";
+          h.style.pointerEvents = "none";
+          h.style.zIndex = 999;
+          h.style.transition = "transform 1.5s ease-out, opacity 1.5s ease-out";
+          document.body.appendChild(h);
+
+          requestAnimationFrame(() => {
+            const angle = Math.random() * Math.PI * 2;
+            const dist = Math.random() * 300 + 100;
+            h.style.transform = `translate(${Math.cos(angle) * dist}px, ${Math.sin(angle) * dist}px) rotate(${Math.random() * 360}deg)`;
+            h.style.opacity = 0;
+          });
+
+          setTimeout(() => h.remove(), 1600);
+        }
+      }
+    </script>
+  </body>
+</html>
